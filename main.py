@@ -4,23 +4,23 @@ import rtmidi
 import Logic
 import time
 
-midiout = rtmidi.MidiOut()
-midiin = rtmidi.MidiIn()
+midi_out = rtmidi.MidiOut()
+midi_in = rtmidi.MidiIn()
 
-midiout.open_port(4)
-midiin.open_port(4)
-midiin.ignore_types(sysex=False)
+midi_out.open_port(4)
+midi_in.open_port(4)
+midi_in.ignore_types(sysex=False)
 
 # HUI_display_AA()
-Logic.initiate_connection(midiin, midiout)
+Logic.initiate_connection(midi_in, midi_out)
 for i in range(8):
-    Logic.send_fader(midiout, i, 0x7f, 0x7f)
+    Logic.send_fader(midi_out, i, 0x7f, 0x7f)
 
 print("now")
 time.sleep(1)
 
-Logic.end_connection(midiout)
+Logic.end_connection(midi_out)
 
 
-midiout.close_port()
-midiin.close_port()
+midi_out.close_port()
+midi_in.close_port()

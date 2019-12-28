@@ -99,18 +99,19 @@ def end_connection(midi_output):
     midi_output.send_message(_go_offline)
 
 
-# TODO: Consider creating class accepting two values for higer and lower, integer, percent etc. to be used in functions
+# TODO: Consider creating class accepting two values for higher and lower, integer, percent etc. to be used in functions
 #   as this which operates on 7bit values
 def send_fader(midi_output, fader_id, fader_position_higher, fader_position_lower):
     """
 
+    :param fader_position_lower:
+    :param fader_position_higher:
     :param midi_output:
     :type midi_output: rtmidi.MidiOut
     :param fader_id:
-    :param fader_position:
     :return:
     """
-    if fader_id not in range (0, 9):
+    if fader_id not in range(0, 9):
         raise ValueError("fader_id must be in range 0-7 (or 8 for master)")
     # if fader_position not in range (0, 16383):
         # raise ValueError("fader_position must be in range 0-65535")
